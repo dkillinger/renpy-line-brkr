@@ -15,7 +15,7 @@ In your `script.rpy` file will render the Say Statement like this:
 
 ![Text-Displayable](images/Text-Displayable-0.png)
 
-This isn't inherently problematic, but for developers who desire more freedom when it comes to positioning text on the screen their options are Text Displayables. Ren'Py [Text Displayables](https://www.renpy.org/doc/html/text.html#text-displayables) empower developers to position text anywhere on screen, but at the cost of developer flexibility. Unlike other common forms of Ren'Py [Text](https://www.renpy.org/doc/html/text.html), Text Displayables are treated as *images* instead of character data. As a result, Text Displayables have the possibility of rendering text off-screen if they're not positioned correctly.
+This isn't inherently problematic, but for developers who desire more freedom when it comes to positioning text on the screen their only native option is Text Displayables. Ren'Py [Text Displayables](https://www.renpy.org/doc/html/text.html#text-displayables) empower developers to position text anywhere on screen, but at the cost of developer flexibility. Unlike other common forms of Ren'Py [Text](https://www.renpy.org/doc/html/text.html), Text Displayables are treated as *images* instead of character data. As a result, Text Displayables have the possibility of rendering text off-screen if they're not positioned correctly.
 
 For example, Ren'Py will center and break text within a Text Displayable as if it were centered on screen, so the following Text Displayable (including the *pause* keyword):
 ```
@@ -26,7 +26,7 @@ In your `script.rpy` file will render the Text Displayable like this:
 
 ![Text-Displayable](images/Text-Displayable-1.png)
 
-However, if you position the Text Displayable using Ren'Py [Animation and Transformation Language](https://www.renpy.org/doc/html/atl.html) anywhere else (in this case at 25% of the x axis):
+However, if you position the Text Displayable using Ren'Py [Animation and Transformation Language](https://www.renpy.org/doc/html/atl.html) anywhere else (in this case at 25% of the x axis and 50% of the y axis):
 ```
 show text "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.":
     pos(0.25, 0.5)
@@ -36,7 +36,7 @@ Will render the Text Displayable off-screen like this:
 
 ![Text-Displayable](images/Text-Displayable-2.png)
 
-The only way a developer can resolve this is by manually inserting Ren'Py newline characters (\n) within the text itself. Thus, to get the previous esxample to fully render on screen, you'd need to break the lines like this:
+The only way a developer can resolve this is while retaining the same position is by manually inserting Ren'Py newline characters (\n) within the text itself. Thus, to get the previous example to fully render on screen, you'd need to break the lines like this:
 ```
 show text "Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n sed do eiusmod tempor incididunt ut\n labore et dolore magna aliqua. Ut enim ad minim veniam, quis\n nostrud exercitation ullamco laboris nisi\n ut aliquip ex ea commodo consequat. Duis aute irure dolor\n in reprehenderit in voluptate velit esse cillum dolore eu\n fugiat nulla pariatur. Excepteur sint occaecat\n cupidatat non proident, sunt in culpa qui officia\n deserunt mollit anim id est laborum.":
     pos(0.25,0.5)
@@ -46,7 +46,7 @@ So Ren'Py will render the Text Displayable like this:
 
 ![Text-Displayable](images/Text-Displayable-3.png)
 
-While doing one Text Displayable is perfectly feasible, if a developer wanted to present their visual novel in a more dynamic style (like a comic book or mangaka for example) they're worflow is reptitive to say the least. Micromanaging the line breaks in tens to hundreds of Ren'Py Text Displayables in one visual novel is oppressively tedious... but not anymore!
+While doing one Text Displayable is perfectly feasible, if a developer wanted to present their visual novel in a more dynamic style (like a comic book or mangaka for example) they're worflow is reptitive to say the least. Not to mention that if a developer wanted to break the lines in a consistent way (say break the line if the line reaches 30 characters), they'd have to spend the time counting characters to attain this desired uniformity. Nonetheless, micromanaging the line breaks in potentially tens to hundreds of Ren'Py Text Displayables in one visual novel is oppressively tedious... but not anymore!
 
 Introducing `line_brkr.py` a python program which uses a command-line interface to uniformly break your Ren'Py Text Displayables' lines to make them a easier to use!
 
@@ -70,73 +70,6 @@ Which will render like this:
 
 ![Text-Displayable](images/Text-Displayable-4.png)
 
-In *microseconds*.  
+In *microseconds*.
 
-<br/>
-
-## User Guide
-asdads
-
-<br/>
-
-### Overview & Use
-
-<br/>
-
-### Required Flags
-
-<br/>
-
-#### Read Flag
--r/--read  
-
-<br/>
-
-#### Write Flags
-##### Write
--w/--write
-
-<br/>
-
-##### Overwrite
--o/--overwrite
-
-<br/>
-
-### Optional Flags
-Ordered by relevancy
-
-<br/>
-
-#### Text Length Flag
--t/--text-length
-
-<br/>
-
-#### Line Inclusion/Exclusion Flags
-##### -x/--exclude-line & -n/--include-line
-
-<br/>
-
-##### Argument Format
-
-<br/>
-
-#### Data Length Flag
--d/--data-length
-
-<br/>
-
-#### Image Length Flag
--i/--image-length
-
-<br/>
-
-
-#### Space Length Flag
--s/--space-length
-
-<br/>
-
-
-## Program Behavior
+To learn how to use `line_brkr.py`, consult the [User Guide]() in the wiki.
