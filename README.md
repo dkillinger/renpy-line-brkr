@@ -44,7 +44,7 @@ pause
 ```
 So Ren'Py will render the Text Displayable like this:
 
-![Text-Displayable](images/Text-Displayable-3.png)
+
 
 While doing one Text Displayable is perfectly feasible, if a developer wanted to present their visual novel in a more dynamic style (like a comic book or mangaka for example) they're worflow is reptitive to say the least. Micromanaging the line breaks in tens to hundreds of Ren'Py Text Displayables in one visual novel is oppressively tedious... but not anymore!
 
