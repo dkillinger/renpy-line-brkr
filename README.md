@@ -13,7 +13,7 @@ pause
 ```
 Will render the Text Displayable like this:
 
-![Text-Displayable]()
+![Text-Displayable](images/Text-Displayable-1.png)
 
 However, if you position the Text Displayable using Ren'Py [Animation and Transformation Language](https://www.renpy.org/doc/html/atl.html) anywhere else (in this case to the leftmost center of the screen):
 ```
@@ -23,7 +23,7 @@ pause
 ```
 Will render the Text Displayable like this:
 
-![Text-Displayable]()
+![Text-Displayable](images/Text-Displayable-2.png)
 
 <br/>
 
