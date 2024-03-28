@@ -342,6 +342,7 @@ class Run_Manager:
             finally:
                 read_file.close()
         tmp.seek(0)
+        os.makedirs(os.path.dirname(prog_vars.write_path), exist_ok=True)
         with open(prog_vars.write_path, 'w', encoding='utf-8') as write_file:
             try:
                 for line in tmp:
