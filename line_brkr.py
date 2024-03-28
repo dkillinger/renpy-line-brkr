@@ -384,10 +384,10 @@ class Argv_Parser:
         self.parser = argparse.ArgumentParser(usage=sys.argv[0] + ' -r [file options] -t [prog params] [prog options]', description='A collection of flags used by ' + sys.argv[0] + ' for the command line interface.', formatter_class=fmt)
         self.parser._optionals.title = 'flags' # risky line of code, can break ArgumentParser in a future update
         
-        self.parser.add_argument('-r', '--read', dest='READ', help='(REQUIRED) file program will read from', required=True)
-        self.parser.add_argument('-w', '--write', dest='WRITE', help='(SEMI-REQUIRED) if not overwriting the read file, set file program will write to')
-        self.parser.add_argument('-o', '--overwrite', dest='OVERWRITE', help='(SEMI-REQUIRED) if not writing to a set file, overwrite read file with program output', action='store_true')
-        self.parser.add_argument('-l', '--line-length', dest='TXT_LEN', type=int, help='set max length of text (in characters) before breaking line', default=0)
+        self.parser.add_argument('-r', '--read-file', dest='READ', help='(REQUIRED) file program will read from', required=True)
+        self.parser.add_argument('-w', '--write-file', dest='WRITE', help='(SEMI-REQUIRED) if not overwriting the read file, set file program will write to')
+        self.parser.add_argument('-o', '--overwrite-file', dest='OVERWRITE', help='(SEMI-REQUIRED) if not writing to a set file, overwrite read file with program output', action='store_true')
+        self.parser.add_argument('-t', '--text-length', dest='TXT_LEN', type=int, help='set max length of text (in characters) before breaking line', default=0)
         self.parser.add_argument('-d', '--data-length', dest='DATA_LEN', type=float, help='set max length of interpolated data (in characters)', default=0)
         self.parser.add_argument('-i', '--image-length', dest='IMG_LEN', type=float, help='set max length of in text images (in characters)', default=0)
         self.parser.add_argument('-s', '--space-length', dest='SPC_LEN', type=int, help='set max length of space characters (in pixels)', default=0)
