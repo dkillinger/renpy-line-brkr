@@ -36,7 +36,7 @@ Will render the Text Displayable off-screen like this:
 
 ![Text-Displayable](images/Text-Displayable-2.png)
 
-The only way a developer can resolve this is while retaining the same position is by manually inserting Ren'Py newline characters (\n) within the text itself. Thus, to get the previous example to fully render on screen, you'd need to break the lines like this:
+The only way a developer can resolve this while retaining the same position is by manually inserting Ren'Py newline characters (\n) within the text itself. Thus, to get the previous example to fully render on screen, you'd need to break the lines like this:
 ```
 show text "Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n sed do eiusmod tempor incididunt ut\n labore et dolore magna aliqua. Ut enim ad minim veniam, quis\n nostrud exercitation ullamco laboris nisi\n ut aliquip ex ea commodo consequat. Duis aute irure dolor\n in reprehenderit in voluptate velit esse cillum dolore eu\n fugiat nulla pariatur. Excepteur sint occaecat\n cupidatat non proident, sunt in culpa qui officia\n deserunt mollit anim id est laborum.":
     pos(0.25,0.5)
