@@ -132,7 +132,7 @@ class Line_Breaker:
                     match_end = curr_match.end(0)
                 elif curr_match := data_regex.match(split_end): # if start is a data block
                     match_end = curr_match.end(0)
-                elif curr_match := ruby_regex.match(split_end):
+                elif curr_match := ruby_regex.match(split_end): # if start is a ruby block
                     match_end = curr_match.end(0)
                 elif curr_match := text_regex.match(split_end): # if start is a text block
                     match_end = curr_match.end(0)
@@ -201,7 +201,7 @@ class Line_Breaker:
             in_alt = False # within unrendered text-to-speech tag {alt}
             alt_start = re.compile(r'^{alt}$')
             alt_end = re.compile(r'^{/alt}$')
-            in_rt = False # within ruby top tag {rt} or {art}
+            in_rt = False # within ruby top text tag {rt} or {art}
             rt_start = re.compile(r'^{(?:a)?rt}$')
             rt_end = re.compile(r'^{/(?:a)?rt}$')
             vspace_regex = re.compile(r'^{vspace=[\d]+}$')
@@ -218,19 +218,19 @@ class Line_Breaker:
                     curr_count = 0
                     is_space = False
                     is_unbreakable = False # word_part cannot be broken (image, data, or ruby)
-                    if alt_start.match(word_part):
-                        in_alt = True
-                    elif alt_end.match(word_part):
+                    if alt_start.match(word_part): # entry is the beginning of an ALT block!
+                        in_alt = True 
+                    elif alt_end.match(word_part): # entry is the end of an ALT block
                         in_alt = False
-                    elif in_alt: # we're in an {alt} block
+                    elif in_alt: # we're in an ALT block
                         pass # so text won't be rendered (do nothing)
-                    elif rt_start.match(word_part):
+                    elif rt_start.match(word_part): # entry is the beginning of an RT block!
                         in_rt = True
-                    elif rt_end.match(word_part):
+                    elif rt_end.match(word_part): # entry is the end of an RT block
                         in_rt = False
-                    elif in_rt: # we're in an {rt} or {art} block
+                    elif in_rt: # we're in an RT block
                         pass # so text won't be longer than text preceding it (hopefully)
-                    elif vspace_regex.match(word_part):
+                    elif vspace_regex.match(word_part): # entry is VSPACE
                         char_count = 0
                     elif space_match := space_regex.match(word_part):
                         if (prog_vars.space_length != 0):
@@ -241,7 +241,7 @@ class Line_Breaker:
                     elif image_regex.match(word_part): # entry is IMAGE
                         curr_count = prog_vars.image_length
                         is_unbreakable = True
-                    elif tag_regex.match(word_part): # entry is a TAG!
+                    elif tag_regex.match(word_part): # entry is a TAG
                         pass # so tag text won't be rendered (do nothing)
                     elif data_regex.match(word_part): # entry is DATA
                         curr_count = prog_vars.data_length
@@ -274,9 +274,6 @@ class Line_Breaker:
                             char_count = 0 + rem_len
                     else: # (char_count + curr_count) < prog_vars.text_length
                         char_count += curr_count
-                    if char_count + 1 == prog_vars.text_length:
-                        temp_part = temp_part + r'\n'
-                        char_count = 0
                     curr_word = curr_word + temp_part
                 add_space = (' ' if not curr_word.endswith(r'\n') else '')
                 char_count += (1 if add_space == ' ' and not (in_alt or in_rt) else 0)
