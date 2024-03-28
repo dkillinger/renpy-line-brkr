@@ -35,16 +35,19 @@ class Program_Variables:
     
     def set_line_list(self, list_string: str) -> None:
         set_list = list_string.split(',')
+        print(set_list)
         for i in range(0, len(set_list)):
             set_list[i] = set_list[i].split('-')
-        try:
-            for i in range(0, len(set_list)):
-                if len(set_list[i]) >= 2:
-                    set_list[i] = [set_list[i][0], set_list[i][1]]
-                for j in range(0, len(set_list[i])):
+        for i in range(0, len(set_list)):
+            if len(set_list[i]) >= 2:
+                if set_list[i][0] > set_list[i][1]:
+                    raise Exception ('POTENTIAL MISTAKEN: range \'' + set_list[i][0] + '-' + set_list[i][1] + '\' is useless. Did you make a mistake?')
+                set_list[i] = [set_list[i][0], set_list[i][1]]
+            for j in range(0, len(set_list[i])):
+                try:
                     set_list[i][j] = int(set_list[i][j])
-        except:
-            raise Exception('INVALID ARG: an item in list \'' + list_string + '\' is not an integer')
+                except:
+                    raise Exception('INVALID ARG: item \'' + str(set_list[i][j]) + '\' in list \'' + list_string + '\' is not an integer')
         self.line_list = set_list
 
 
@@ -382,15 +385,15 @@ class Argv_Parser:
         # lambda for formatting help menu in argparser
         fmt = lambda prog: Help_Formatter(prog)
         self.parser = argparse.ArgumentParser(usage=sys.argv[0] + ' -r [file options] -t [prog params] [prog options]', description='A collection of flags used by ' + sys.argv[0] + ' for the command line interface.', formatter_class=fmt)
-        self.parser._optionals.title = 'arguments' # risky line of code, can break ArgumentParser in a future update
+        self.parser._optionals.title = 'flags' # risky line of code, can break ArgumentParser in a future update
         
         self.parser.add_argument('-r', '--read', dest='READ', help='(REQUIRED) file program will read from', required=True)
         self.parser.add_argument('-w', '--write', dest='WRITE', help='(SEMI-REQUIRED) if not overwriting the read file, set file program will write to')
         self.parser.add_argument('-o', '--overwrite', dest='OVERWRITE', help='(SEMI-REQUIRED) if not writing to a set file, overwrite read file with program output', action='store_true')
-        self.parser.add_argument('-l', '--text-length', dest='TXT_LEN', type=int, help='set max length of text (in characters) before breaking line', default=0)
+        self.parser.add_argument('-l', '--line-length', dest='TXT_LEN', type=int, help='set max length of text (in characters) before breaking line', default=0)
         self.parser.add_argument('-d', '--data-length', dest='DATA_LEN', type=float, help='set max length of interpolated data (in characters)', default=0)
         self.parser.add_argument('-i', '--image-length', dest='IMG_LEN', type=float, help='set max length of in text images (in characters)', default=0)
-        self.parser.add_argument('-s', '--space-length', dest='SPC_LEN', type=int, help='set max length of in space characters (in pixels)', default=0)
+        self.parser.add_argument('-s', '--space-length', dest='SPC_LEN', type=int, help='set max length of space characters (in pixels)', default=0)
         self.parser.add_argument('-x', '--exclude-line', dest='EXCLUDE', help='if not using --include-line, set line(s) in file you want the program to include')
         self.parser.add_argument('-n', '--include-line', dest='INCLUDE', help='if not using --exclude-line, set line(s) in file you want the program to exclude')
 
