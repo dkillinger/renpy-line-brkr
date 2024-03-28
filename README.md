@@ -44,11 +44,11 @@ pause
 ```
 So Ren'Py will render the Text Displayable like this:
 
-
+![Text-Displayable](images/Text-Displayable-3.png)
 
 While doing one Text Displayable is perfectly feasible, if a developer wanted to present their visual novel in a more dynamic style (like a comic book or mangaka for example) they're worflow is reptitive to say the least. Micromanaging the line breaks in tens to hundreds of Ren'Py Text Displayables in one visual novel is oppressively tedious... but not anymore!
 
-Introducing `line_brkr.py` a python program which uses a command-line interface to programmatically break your Ren'Py Text Displayables' lines to make them a easier to use!
+Introducing `line_brkr.py` a python program which uses a command-line interface to uniformly break your Ren'Py Text Displayables' lines to make them a easier to use!
 
 For example, instead of inserting the newlines manually, you can enter this command (assuming `line_brkr.py` is in the same directory as your Ren'Py Project)
 ```
@@ -66,13 +66,11 @@ show text "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiu
     pos(0.25,0.5)
 pause
 ```
-To render this:
+Which will render like this:
 
 ![Text-Displayable](images/Text-Displayable-4.png)
 
-In *microseconds*. 
-
-If this is interesting 
+In *microseconds*.  
 
 <br/>
 
