@@ -6,7 +6,7 @@ As said on [Ren'Py's Website](https://www.renpy.org/), "Ren'Py is a visual novel
 
 By default, Ren'Py displays any [Say Statement](https://www.renpy.org/doc/html/dialogue.html#say-statement) dialogue at a set position on the screen. For most developers, this default position is perfectly fine, and they can easily tailor this position to their needs if needed. However, this position remains the same for all Say Statement text. 
 
-For example, a normal Ren'Py say statement such as:
+For example, a normal Ren'Py Say Statement such as:
 ```
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 pause
