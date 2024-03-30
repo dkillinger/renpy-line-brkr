@@ -280,7 +280,7 @@ class Line_Breaker:
                 rtrn_string = rtrn_string + curr_word + add_space     
         else:
             rtrn_string = ' '.join(''.join(word) for word in word_list)
-        rtrn_string = re.sub(r'(?<!\\)\s+$', '', re.sub(r'(?<!\\)\s\\n', r'\\n', rtrn_string))
+        rtrn_string = re.sub(r'\\n$', '', re.sub(r'(?<!\\)\s+$', '', re.sub(r'(?<!\\)\s\\n', r'\\n', rtrn_string)))
         return rtrn_string
     
     
